@@ -2,8 +2,8 @@ streamlit
 streamlit_option_menu
 absl-py==2.0.0
 altair==5.2.0
-sounddevice==0.4.6
-pyaudio==0.2.11
+sounddevice
+pyaudio
 astunparse==1.6.3
 attrs==23.2.0
 audioread==3.0.1
@@ -73,7 +73,7 @@ scikit-learn==1.3.2
 scipy==1.11.4
 six==1.16.0
 smmap==5.0.1
-sounddevice==0.4.6
+sounddevice
 soundfile==0.12.1
 soxr==0.3.7
 streamlit==1.30.0
