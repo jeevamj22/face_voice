@@ -1,7 +1,7 @@
 ﻿absl-py==2.0.0
 altair==5.2.0
-sounddevice
-pyaudio
+sounddevice==0.4.6
+pyaudio==0.2.11
 astunparse==1.6.3
 attrs==23.2.0
 audioread==3.0.1
