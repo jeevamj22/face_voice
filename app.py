@@ -10,8 +10,6 @@ import numpy as np
 import sounddevice as sd
 import librosa
 from keras.models import load_model
-import subproces
-subprocess.run(["pip","install","-r","requirements"])
 
 # Load the pre-trained models
 face_cascade = cv2.CascadeClassifier(cv2.data.haarcascades + 'haarcascade_frontalface_default.xml')
