@@ -65,9 +65,5 @@ while True:
     # Display the video feed in the Streamlit app
     st.image(image, channels="BGR", use_column_width=True)
 
-    # Break the loop if the user presses the "Stop" button
-    if st.button("Stop"):
-        break
-
-# Release the webcam capture
+# Release the webcam capture (this part will not be reached in this setup)
 cap.release()
