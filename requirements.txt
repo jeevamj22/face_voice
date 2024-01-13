@@ -1,6 +1,9 @@
 streamlit
 streamlit_option_menu
 --upgrade pip
+tensorflow
+librosa
+tensorflow
 absl-py==2.0.0
 altair==5.2.0
 sounddevice
