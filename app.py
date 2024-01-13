@@ -8,6 +8,8 @@ from streamlit_option_menu import option_menu
 import cv2
 import numpy as np
 import sounddevice as sd
+import soundfile
+import pyaudio
 import librosa
 from keras.models import load_model
 
