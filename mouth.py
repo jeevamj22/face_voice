@@ -12,12 +12,16 @@ holistic = mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confi
 
 # Function to perform mediapipe detection
 def mediapipe_detection(image, model):
-    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-    image.flags.writeable = False
-    results = model.process(image)
-    image.flags.writeable = True
-    image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-    return image, results
+    # Convert the image to RGB format
+    rgb_image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+    
+    # Process the RGB image
+    results = model.process(rgb_image)
+    
+    # Convert the RGB image back to BGR format
+    bgr_image = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2BGR)
+    
+    return bgr_image, results
 
 # Function to check if the mouth is open
 def is_mouth_open(results):
@@ -38,9 +42,18 @@ def update_mouth_status(is_open):
     status_text = "Mouth is open" if is_open else "Mouth is closed"
     st.text("Mouth Status: " + status_text)
 
-# Start the video feed update function
-def update_video_feed():
+# Open the webcam
+cap = cv2.VideoCapture(0)
+
+# Start the Streamlit app
+st.title("Mouth Open Detection")
+
+# Infinite loop to continuously update the video feed
+while True:
+    # Read a frame from the webcam
     ret, frame = cap.read()
+    
+    # Perform Mediapipe detection
     image, results = mediapipe_detection(frame, holistic)
 
     # Check if the mouth is open
@@ -52,14 +65,9 @@ def update_video_feed():
     # Display the video feed in the Streamlit app
     st.image(image, channels="BGR", use_column_width=True)
 
-# Open the video capture
-cap = cv2.VideoCapture(0)
+    # Break the loop if the user presses the "Stop" button
+    if st.button("Stop"):
+        break
 
-# Start the Streamlit app
-st.title("Mouth Open Detection")
-
-# Start the video feed update function
-update_video_feed()
-
-# Release the video capture
+# Release the webcam capture
 cap.release()
