@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import mediapipe as mp
 import streamlit as st
+from streamlit_option_menu import option_menu
 
 # Key points using MP holistics
 mp_holistic = mp.solutions.holistic
